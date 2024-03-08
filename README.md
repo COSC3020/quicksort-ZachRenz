@@ -14,3 +14,26 @@ recursive call considers.
 Analyse the time complexity of your implementation and give a $\Theta$ bound for
 its worst-case runtime. Add your answer, including your reasoning, to this
 markdown file.
+
+## Worst Case Runtime
+
+To find the worst case we need to imagine an array of any size that is sorted in descending order, and run that through our algorithm.
+``` javascript
+for (i = 1, pivot = numSort.indexOf(0); i <= array.length; i++, pivot = numSort.indexOf(0))
+```
+The first for loop will always iterate over the entire array no matter what, so i'm going to associate a complexity of `n` to it.
+
+Looking at the for loop nested in the one above:
+``` javascript
+        for(j = pivot+1; j < array.length; j++){
+            if (array[j] < array[pivot]){ // Here we move all numbers less than pivot in front of pivot
+                [array[j], array[lessThan]] = [array[lessThan], array[j]];
+                lessThan++;
+            }
+        }
+```
+This for loop will always run through the entire unsorted subarray for every number in each partition. (Subarray meaning the space between the pivot and the end of the list). So this for loop also has a complexity of `n`.
+
+Therefore, the runtime complexity for the worst case is $\Theta(n^2)$
+
+
