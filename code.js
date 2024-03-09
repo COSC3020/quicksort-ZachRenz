@@ -3,7 +3,7 @@ function quicksort(array = []) {
         return array;
     }
     numSort = Array(array.length).fill(0); // This array tells our algorithm what numbers are alreay storted
-    movePivot(numSort, array, 0, 1);
+    // movePivot(numSort, array, 0, 1);
     for (pivot = 0; numSort.indexOf(0) != -1; pivot = 0){
         for(pivot; pivot < array.length; pivot ++){
             if (numSort[pivot] == 0){
@@ -24,7 +24,7 @@ function movePivot(numSort, array, pivot, lessThan) {
     }
     numSort[lessThan-1] = 1; // Marks where pivot ends up as in place
     [array[pivot], array[lessThan - 1]] = [array[lessThan - 1], array[pivot]];
-    return lessThan - 1;
+    return j - 1;
 }
 
 
