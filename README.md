@@ -18,22 +18,8 @@ markdown file.
 ## Worst Case Runtime
 
 To find the worst case we need to imagine an array of any size that is sorted in descending order, and run that through our algorithm.
-``` javascript
-for (pivot = 0; numSort.indexOf(0) != -1; pivot = 0)
-        for(pivot; pivot < array.length; pivot ++)
-```
-The second for loop will always iterate over the entire array no matter what, so i'm going to associate a complexity of `n` to it. The outside for loop only breaks when the list is sorted, (which is when our list of zeros are ones, it indicates if a number is sorted in that place) so this for loop depends on the complexity of the `movePivot` function.
 
-Looking at the function `movePivot`:
-``` javascript
-for(j = pivot+1; numSort[j] == 0 && j < array.length; j++){
-    if (array[j] < array[pivot]){ // Here we move all numbers less than pivot in front of pivot
-        [array[j], array[lessThan]] = [array[lessThan], array[j]];
-        lessThan++;
-    }
-}
-```
-This for loop will always run through the entire unsorted subarray for every number in each partition. (Subarray meaning the space between the pivot and a sorted number). So this for loop also has a complexity of `n`.
+This algorithm will always make the first item in the array the current pivot, which is the number that takes the maximum amount of work to move to the end of the list of unsorted numbers. We'll never have a right side of the pivot to sort thankfully, but that doesn't make it any better. Even though this algorithm only looks at the left side of the currently sorted pivot, it's just moving the first number in the array to the end of unsorted numbers in the array, with a total work of `n * n` where n is the set of unsorted numbers in our array.
 
 Therefore, the runtime complexity for the worst case is $\Theta(n^2)$
 
