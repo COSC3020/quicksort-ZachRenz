@@ -5,13 +5,11 @@ function quicksort(array = []) {
     numSort = Array(array.length).fill(0); // This array tells our algorithm what numbers are alreay storted
     // movePivot(numSort, array, 0, 1);
     for (pivot = 0; numSort.indexOf(0) != -1; pivot = 0){
-        placed = false;
-        for(pivot; placed == false; pivot ++){
+        for(pivot; pivot <= array.length; pivot ++){
             if (numSort[pivot] == 0){
                 lessThan = pivot + 1; // Stores the index of the last item less than our pivot
                 pivot = movePivot(numSort, array, pivot, lessThan);
-                placed = true;
-                console.log(numSort);
+                // console.log(numSort); // Debugging Script
             }
         }
     } 
@@ -27,10 +25,10 @@ function movePivot(numSort, array, pivot, lessThan) {
     }
     numSort[lessThan-1] = 1; // Marks where pivot ends up as in place
     [array[pivot], array[lessThan - 1]] = [array[lessThan - 1], array[pivot]];
-    return j - 1;
+    return j;
 }
 
-console.log(quicksort([3,2,1,5,4]));
+// console.log(quicksort([3,2,1,5,4])); // Debugging Script
 
 
 
